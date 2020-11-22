@@ -1,0 +1,49 @@
+.navigationBar {
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: blue;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.App-header {
+  color: black;
+  font-size: xxx-large;
+  grid-column-start: 3;
+  grid-column-end: 4;
+}
+
+.signin {
+  grid-column: 5/5;
+  align-self: center;
+}
+
+.signin {
+  cursor: pointer;
+}
+
+.profile {
+  grid-column: 5/5;
+  align-self: center;
+}
+
+.menuWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.menuDropdown {
+  display: none;
+  position: absolute;
+  background-color: salmon;
+  z-index: 10;
+  padding: 12px 16px;
+  text-align: start;
+  list-style: none;
+}
+
+.menuWrapper:hover .menuDropdown {
+  display: block;
+  position: absolute;
+  width: 100%;
+}

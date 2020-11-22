@@ -1,0 +1,30 @@
+.profileWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.profileImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.displayedUsername {
+  color: red;
+}
+
+.profileDropdown {
+  display: none;
+  position: absolute;
+  background-color: salmon;
+  z-index: 10;
+  padding: 12px 16px;
+  text-align: start;
+  list-style: none;
+}
+
+.profileWrapper:hover .profileDropdown {
+  display: block;
+  position: absolute;
+  width: 100%;
+}

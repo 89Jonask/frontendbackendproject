@@ -1,0 +1,39 @@
+.dropdown-menu {
+  display: inline-block;
+  position: absolute;
+  width: 60%;
+  padding: 4px 4px 4px;
+  z-index: 99;
+  left: 20%;
+  background-color: rgb(179, 255, 0);
+}
+
+.dropdown-menu.clicked {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  .dropdown-wrapper {
+    left: 0;
+    background-color: yellow;
+    text-align: left;
+    position: static;
+    width: 90%;
+    padding-inline-start: 0%;
+  }
+
+  .dropdown-menu {
+    left: 0;
+    background-color: blue;
+    text-align: left;
+    position: static;
+    width: 90%;
+    text-decoration: underline;
+  }
+
+  .dropdown-item {
+    float: left;
+    color: red;
+    background-color: green;
+  }
+}
