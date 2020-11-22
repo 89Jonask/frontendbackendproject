@@ -43,7 +43,7 @@
 }
 
 .menuWrapper:hover .menuDropdown {
-  display: block;
+  display: grid;
   position: absolute;
   width: 100%;
 }
