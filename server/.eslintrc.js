@@ -9,9 +9,9 @@ module.exports = {
     sourceType: "module",
   },
   rules: {
-    indent: ["error", "tab"],
+    indent: ["none", "tab"],
     "linebreak-style": ["error", "unix"],
     quotes: ["error", "double"],
-    semi: ["warn", "always"],
+    semi: ["warn", "never"],
   },
 };

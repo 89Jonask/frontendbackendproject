@@ -1,35 +1,28 @@
-import express, { response } from "express";
+import express from "express";
 import dotenv from "dotenv";
 import helmet from "helmet";
 import morgan from "morgan";
+import bodyParser from "body-parser";
 import middlewares from "./src/middlewares/Middlewares.js";
-import mongoose from "mongoose";
+import Configuration from "./config/Configuration.js";
+import UserRoutes from "./src/routes/User.routes.js";
 
 dotenv.config();
 const app = express();
-const port = process.env.PORT;
-
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use(helmet());
 app.use(morgan("common"));
 
 app.get("/painting", (req, res) => {
-  res.send("painting");
+  res.send("paint");
 });
 
+UserRoutes.routes(app);
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 
-mongoose
-  .connect("mongodb://localhost/nfgdatabase", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("Succesfully connected to the database!!!!"))
-  .catch((error) => {
-    console.log("ERROR WILE TRYING wTO CONNECT TO THE DATABASE: ", error);
-    process.exit();
-  });
+Configuration.connectToDatabase();
+Configuration.connectToPort(app);
 
-app.listen(port, () => {
-  console.log(`servern är igång på portdd 3002 ${port}`);
-});
+export default app;
