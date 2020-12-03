@@ -1,6 +1,5 @@
 import Chai from "chai";
 import ChaiHTTP from "chai-http";
-import { createSecureServer } from "http2";
 import { describe, it as test } from "mocha";
 import Statuscode from "../config/StatusCode.js";
 import app from "../Server.js";

@@ -10,8 +10,8 @@ module.exports = {
   },
   rules: {
     indent: ["none", "tab"],
-    "linebreak-style": ["error", "unix"],
-    quotes: ["error", "double"],
+    "linebreak-style": ["warn", "unix"],
+    quotes: ["warn", "double"],
     semi: ["warn", "never"],
   },
 };

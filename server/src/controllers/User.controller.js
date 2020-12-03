@@ -4,7 +4,8 @@ import StatusCode from "../../config/StatusCode.js";
 const createUser = async (req, res) => {
   const user = new UserModel({
     username: req.body.username,
-    password: req.body.password,
+    email: req.body.email,
+    telephone: req.body.telephone,
   });
 
   try {
@@ -35,7 +36,7 @@ const getUserWithId = async (req, res) => {
   } catch (error) {
     res.status(StatusCode.INTERNAL_SERVER_ERROR).send({
       message:
-        "Error occured while trying to retrieve user with ID: " +
+        "Error ocscured while trying to retrieve user with ID: " +
         req.params.userId,
       error: error.message,
     });
@@ -47,11 +48,9 @@ const getUserWithUsernameQuery = async (req, res) => {
     const response = await UserModel.find({ username: req.query.username });
     response.length !== 0
       ? res.status(StatusCode.OK).send(response)
-      : res
-          .status(StatusCode.NOT_FOUND)
-          .send({
-            message: "Could not find user with username " + req.query.username,
-          });
+      : res.status(StatusCode.NOT_FOUND).send({
+          message: "Could not find user with username " + req.query.username,
+        });
   } catch (error) {
     res.status(StatusCode.INTERNAL_SERVER_ERROR).send({
       message:
@@ -81,7 +80,7 @@ const updateUser = async (req, res) => {
   } catch (error) {
     res.status(StatusCode.INTERNAL_SERVER_ERROR).send({
       message:
-        "Error occured while trying to update values of the user with ID: " +
+        "Error occured whiles trying to update values of the user with ID: " +
         req.params.userId,
       error: error.message,
     });

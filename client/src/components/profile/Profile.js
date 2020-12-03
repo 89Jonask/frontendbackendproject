@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { UserContext } from "../../shared/global/provider/UserProvider";
 import { useHistory } from "react-router-dom";
 import "./Profile.css";
@@ -8,6 +8,9 @@ export const Profile = () => {
   const history = useHistory();
   const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext);
 
+  const [click, setClick] = useState(false);
+  const handleClick = () => setClick(!click);
+
   const logout = () => {
     localStorage.removeItem("username");
     setAuthenticatedUser(false);
@@ -15,7 +18,7 @@ export const Profile = () => {
   };
 
   return (
-    <div className="profileWrapper">
+    <div className="profileWrapper" onClick={handleClick}>
       <img
         className="profileImg"
         src={"https://www.thispersondoesnotexist.com/image"}
@@ -23,8 +26,12 @@ export const Profile = () => {
       />
       <span className="displayedUsername">{authenticatedUser}</span>
       <div className="profileDropdown">
-        <a onClick={() => history.push(RoutingPath.settingsView)}>Settings</a>
-        <a onClick={() => history.push(RoutingPath.profileView)}>Profile</a>
+        <a href={RoutingPath.settingsView} className="menu-link">
+          Settings
+        </a>
+        <a href={RoutingPath.profileView} className="menu-link">
+          Profile
+        </a>
         <hr />
         <a onClick={() => logout()}>Logout</a>
       </div>

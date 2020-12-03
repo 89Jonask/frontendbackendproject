@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import "./NavigationBar.css";
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../../shared/global/provider/UserProvider";
 import { Profile } from "../profile/Profile";
@@ -30,33 +29,34 @@ export const NavigationBar = () => {
   };
 
   return (
-    <div className="navigationBar">
-      <div className="menuWrapper">
-        <img
-          className="profileImg"
-          src={"https://www.thispersondoesnotexist.com/image"}
-          alt=""
-        />
-        <span className="displayedUsername">Menu</span>
-        <div className="menuDropdown">
-          <Link to={RoutingPath.homeView} className="menu-link">
-            Home
-          </Link>
-          <Link to={RoutingPath.homeView} className="menu-link">
-            Home
-          </Link>
-
-          <Link to={RoutingPath.homeView} className="menu-link">
-            Home
-          </Link>
-
-          <Link to={RoutingPath.homeView} className="menu-link">
-            signin
-          </Link>
-        </div>
-      </div>
+    <div class="topnav" id="myTopnav">
       <header className="App-header">Shareful</header>
-      {displayUserIfAuthenticated()}
+      <span className="profilebox">{displayUserIfAuthenticated()}</span>
+      <div class="icon" href="" onClick={handleClick}>
+        &#9776;
+      </div>
+      <ul className={click ? "main-menu active" : "main-menu"}>
+        <a href={RoutingPath.homeView} className="menu-link">
+          Home
+        </a>
+        <a href={RoutingPath.userView} className="menu-link">
+          User
+        </a>
+        <div class="dropdown">
+          <button class="dropbtn">
+            Dropdown
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Linkd 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div>
+        <a href={RoutingPath.aboutView} className="menu-link">
+          about
+        </a>
+      </ul>
     </div>
   );
 };

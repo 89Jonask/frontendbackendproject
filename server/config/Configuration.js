@@ -13,7 +13,7 @@ const connectToDatabase = async () => {
     });
     console.log("SUCESSFULLY CONNECTED TO THE DATABASE!");
   } catch (error) {
-    console.log("ERROR WHILE TRYING TO CONNECT TO THE DATABASE: ", error);
+    console.log("ERROR WHILE TRYINdG TO CONNECT TO THE DATABASE: ", error);
     process.exit();
   }
 };
