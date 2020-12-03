@@ -32,9 +32,21 @@ export const Routing = (props) => {
       <Switch>
         <Route exact path={RoutingPath.aboutView} component={AboutView} />
         <Route exact path={RoutingPath.homeView} component={HomeView} />
-        <Route exact path={RoutingPath.profileView} component={ProfileView} />
-        <Route exact path={RoutingPath.settingsView} component={SettingsView} />
-        <Route exact path={RoutingPath.signinView} component={SigninView} />
+        <Route
+          exact
+          path={RoutingPath.profileView}
+          component={blockRouteIfNotAuthenticated(ProfileView)}
+        />
+        <Route
+          exact
+          path={RoutingPath.settingsView}
+          component={blockRouteIfNotAuthenticated(SettingsView)}
+        />
+        <Route
+          exact
+          path={RoutingPath.signinView}
+          component={blockRouteIfAuthenticated(SigninView)}
+        />
         <Route component={HomeView} />
       </Switch>
     </Router>

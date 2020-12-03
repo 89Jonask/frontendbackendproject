@@ -29,10 +29,10 @@ export const NavigationBar = () => {
   };
 
   return (
-    <div class="topnav" id="myTopnav">
+    <div className="topnav" id="myTopnav">
       <header className="App-header">Shareful</header>
       <span className="profilebox">{displayUserIfAuthenticated()}</span>
-      <div class="icon" href="" onClick={handleClick}>
+      <div className="icon" href="" onClick={handleClick}>
         &#9776;
       </div>
       <ul className={click ? "main-menu active" : "main-menu"}>
@@ -42,13 +42,13 @@ export const NavigationBar = () => {
         <a href={RoutingPath.userView} className="menu-link">
           User
         </a>
-        <div class="dropdown">
-          <button class="dropbtn">
+        <div className="dropdown">
+          <button className="dropbtn">
             Dropdown
-            <i class="fa fa-caret-down"></i>
+            <i className="fa fa-caret-down"></i>
           </button>
-          <div class="dropdown-content">
-            <a href="#">Link 1</a>
+          <div className="dropdown-content">
+            <a href="#">Link1 1</a>
             <a href="#">Linkd 2</a>
             <a href="#">Link 3</a>
           </div>
