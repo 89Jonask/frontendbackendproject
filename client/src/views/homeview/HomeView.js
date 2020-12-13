@@ -1,41 +1,41 @@
-import React, { useState } from "react";
-import UserService from "../../shared/apis/service/UserService.js";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { getUsers, deleteUser } from "../../shared/apis/ToDoAPI";
 
 export const HomeView = () => {
-  const [data, setData] = useState();
-  const [search, setSearch] = useState("");
+  const [user, setUser] = useState([]);
 
-  const fetchDataFromExternalAPI = () => {
-    UserService.searchForUser(search.toLowerCase())
-      .then((response) => setData(response.data))
-      .catch((error) => console.log(error));
-
-    /* Axios.get(`https://pokeapi.co/api/v2/pokemon/${search.toLocaleLowerCase()}`)
-      .then((response) => setData(response.data))
-      .catch((error) => console.log(error)); */
-  };
-
-  const displayData = () => {
-    if (data) {
-      return (
-        <div>
-          <h1>username: {data.username}</h1>
-          <h1>email: {data.email}</h1>
-          <h1>telephone: {data.telephone}</h1>
-        </div>
-      );
-    }
-  };
+  useEffect(() => {
+    const fetchUser = async () => {
+      const user = await getUsers();
+      setUser(user);
+    };
+    fetchUser();
+  }, []);
 
   return (
-    <div>
-      <span>search for user</span>
-      <input onChange={(event) => setSearch(event.target.value)} />
-
-      <br />
-      <h1>I am the home</h1>
-      <button onClick={() => fetchDataFromExternalAPI()}>Make API call</button>
-      {displayData()}
+    <div className="container">
+      <div className="mt-3">
+        <h3>Todo List</h3>
+        <table className="table table-striped mt-3">
+          <thead>
+            <tr>
+              <th>Text</th>
+              <th>Actissson</th>
+            </tr>
+          </thead>
+          <tbody>
+            {user.map((user) => (
+              <tr key={user._id}>
+                <td>{user.text}</td>
+                <td>
+                  <Link to={`/edituser/${user._id}`}>Edit</Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

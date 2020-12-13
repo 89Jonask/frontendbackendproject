@@ -6,6 +6,8 @@ import { ProfileView } from "../views/profileview/ProfileView.js";
 import { SettingsView } from "../views/settingsview/SettingsView.js";
 import { SigninView } from "../views/signinview/SigninView.js";
 import { UserContext } from "../shared/global/provider/UserProvider.js";
+import { CreateUser } from "../users/CreateUser/CreateUser.js";
+import { EditUser } from "../users/EditUser/EditUser.js";
 import RoutingPath from "./RoutingPath";
 
 export const Routing = (props) => {
@@ -30,8 +32,14 @@ export const Routing = (props) => {
     <Router>
       {props.children}
       <Switch>
-        <Route exact path={RoutingPath.aboutView} component={AboutView} />
         <Route exact path={RoutingPath.homeView} component={HomeView} />
+
+        <Route exact path={RoutingPath.aboutView} component={AboutView} />
+
+        <Route path={RoutingPath.editUser} component={EditUser} />
+
+        <Route path={RoutingPath.createUser} component={CreateUser} />
+
         <Route
           exact
           path={RoutingPath.profileView}

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import "./NavigationBar.css";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../../shared/global/provider/UserProvider";
 import { Profile } from "../profile/Profile";
 import RoutingPath from "../../routes/RoutingPath";
@@ -36,26 +36,15 @@ export const NavigationBar = () => {
         &#9776;
       </div>
       <ul className={click ? "main-menu active" : "main-menu"}>
-        <a href={RoutingPath.homeView} className="menu-link">
+        <Link to={RoutingPath.homeView} className="menu-link">
           Home
-        </a>
-        <a href={RoutingPath.userView} className="menu-link">
-          User
-        </a>
-        <div className="dropdown">
-          <button className="dropbtn">
-            Dropdown
-            <i className="fa fa-caret-down"></i>
-          </button>
-          <div className="dropdown-content">
-            <a href="#">Link1 1</a>
-            <a href="#">Linkd 2</a>
-            <a href="#">Link 3</a>
-          </div>
-        </div>
-        <a href={RoutingPath.aboutView} className="menu-link">
+        </Link>
+        <Link to={RoutingPath.createUser} className="menu-link">
+          Create user
+        </Link>
+        <Link to={RoutingPath.aboutView} className="menu-link">
           about
-        </a>
+        </Link>
       </ul>
     </div>
   );
