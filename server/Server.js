@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(helmet());
 app.use(morgan("common"));
+app.use(express.static("../client/build"));
 
 UserRoutes.routes(app);
 app.use(middlewares.notFound);

@@ -4,8 +4,7 @@ import StatusCode from "../../config/StatusCode.js";
 const createUser = async (req, res) => {
   const user = new UserModel({
     username: req.body.username,
-    email: req.body.email,
-    telephone: req.body.telephone,
+    text: req.body.text,
   });
 
   try {
@@ -72,7 +71,7 @@ const updateUser = async (req, res) => {
       req.params.userId,
       {
         username: req.body.username,
-        password: req.body.password,
+        text: req.body.text,
       },
       { new: true }
     );
@@ -103,6 +102,22 @@ const deleteUser = async (req, res) => {
   }
 };
 
+const deleteAllUsers = async (req, res) => {
+  try {
+    const response = await UserModel.deleteMany();
+    res.status(StatusCode.OK).send({
+      message: `${data.deletedCount} Sucessfully deleted all the USERS`,
+    });
+  } catch (error) {
+    res.status(StatusCode.INTERNAL_SERVER_ERROR).send({
+      message:
+        "Error occured while trying to delete user with the ID: " +
+        req.params.userId,
+      error: error.message,
+    });
+  }
+};
+
 export default {
   createUser,
   getAllUsers,
@@ -110,4 +125,5 @@ export default {
   getUserWithUsernameQuery,
   updateUser,
   deleteUser,
+  deleteAllUsers,
 };

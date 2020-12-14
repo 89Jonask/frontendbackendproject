@@ -1,7 +1,7 @@
 import http from "../UserAPI";
 import Axios from "axios";
 
-export const getUsers = Axios.get(`/`).then(
+const getUsers = Axios.get(`/`).then(
   (res) => {
     console.log(res.data);
   },

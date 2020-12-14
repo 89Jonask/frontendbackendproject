@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { UserForm } from "../UserForm/UserForm";
-import Button from "react-bootstrap/Button";
-import axios from "axios";
 import { useRouteMatch, useHistory } from "react-router-dom";
 import { getUser, editUser } from "../../shared/apis/ToDoAPI";
 
@@ -12,16 +10,18 @@ export const EditUser = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const user = await getUser(match.params._id);
+      const user = await getUser(match.params.id);
       setUser(user);
     };
     fetchUser();
   });
 
   const onSubmit = async (data) => {
-    await editUser(data, match.params._id);
+    await editUser(data, match.params.id);
     history.push("/");
   };
+
+  console.log(user);
 
   return user ? (
     <div className="container">

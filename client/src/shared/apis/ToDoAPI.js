@@ -13,7 +13,7 @@ export const createsUser = (user) =>
 
 export const editUser = (user, _id) =>
   fetch(`http://localhost:3006/edituser${_id}`, {
-    method: "POST",
+    method: "PUT",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
