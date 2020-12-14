@@ -11,7 +11,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "cd server && npm install && npm run install-frontend && npm run build",
+    "heroku-postbuild": "cd server && npm install && npm run install-client && npm run build",
     "start": "cd server && node Server.js"
   },
   "repository": {

@@ -15,7 +15,10 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(helmet());
 app.use(morgan("common"));
-app.use(express.static("../client/build"));
+
+if (process.env.node_ENV === "production")
+  app.use(express.static("../client/build"));
+//app.use(express.static("../client/build"));
 
 UserRoutes.routes(app);
 app.use(middlewares.notFound);
